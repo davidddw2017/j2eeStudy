@@ -58,4 +58,13 @@ public class EmployeeController {
 		return ResultBean.success();
 	}
 	
+	@PostMapping("delete")
+    @ResponseBody
+    public ResultBean removeEmp(@RequestBody List<String> ids) {
+        for (String id : ids) {
+        	service.deleteEmployee(Long.parseLong(id));
+        }
+        return ResultBean.success();
+    }
+	
 }

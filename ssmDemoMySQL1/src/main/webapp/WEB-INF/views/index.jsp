@@ -1,20 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
+<base href="<%=basePath%>">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <meta name="renderer" content="webkit" />
 <link rel="icon" type="image/x-icon" href="static/favicon.ico">
-<link rel="stylesheet" href="webjars/layui/css/layui.css">
-<link rel="stylesheet" href="webjars/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="static/css/zadmin.css">
-<link rel="stylesheet" href="static/css/dtree.css">
-<link rel="stylesheet" href="static/css/common.css">
-<link rel="stylesheet" href="static/css/font.css">
+<link rel="stylesheet" href="<%=basePath%>webjars/layui/css/layui.css">
+<link rel="stylesheet" href="<%=basePath%>webjars/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=basePath%>static/css/zadmin.css">
+<link rel="stylesheet" href="<%=basePath%>static/css/dtree.css">
+<link rel="stylesheet" href="<%=basePath%>static/css/common.css">
+<link rel="stylesheet" href="<%=basePath%>static/css/font.css">
 </head>
 <body class="layui-layout-body">
   <div class="layui-layout layui-layout-admin">
@@ -31,8 +34,7 @@
             class="layui-icon layui-icon-shrink-right"></i>
         </a></li>
         <!-- 面包屑 -->
-        <span class="layui-breadcrumb layui-anim layui-anim-up"> <a><cite>首页</cite></a>
-        </span>
+        <span class="layui-breadcrumb layui-anim layui-anim-up"> <a><cite>首页</cite></a></span>
       </ul>
 
       <!-- 头像区域 -->
@@ -102,10 +104,10 @@
     <!-- 移动端遮罩 -->
     <div class="site-mobile-shade"></div>
   </div>
-  <script src="webjars/jquery/jquery.min.js"></script>
-  <script src="webjars/layui/layui.all.js"></script>
-  <script src="static/js/zadmin.js"></script>
-  <script src="static/js/custom.js"></script>
-  <script src="static/js/dtree.js"></script>
+  <script src="<%=basePath%>webjars/jquery/jquery.min.js"></script>
+  <script src="<%=basePath%>webjars/layui/layui.all.js"></script>
+  <script src="<%=basePath%>static/js/zadmin.js"></script>
+  <script src="<%=basePath%>static/js/custom.js"></script>
+  <script src="<%=basePath%>static/js/dtree.js"></script>
 </body>
 </html>

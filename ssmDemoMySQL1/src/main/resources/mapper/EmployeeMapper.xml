@@ -49,6 +49,15 @@
       <if test="address != null">
         address = #{address},
       </if>
+      <if test="department != null">
+        department = #{department},
+      </if>
+      <if test="salary != null">
+        salary = #{salary},
+      </if>
+      <if test="tel != null">
+        tel = #{tel},
+      </if>
         age = #{age}
     </set>
     WHERE id=#{id}
