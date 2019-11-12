@@ -14,6 +14,11 @@ public class IndexController {
         return "index";
     }
     
+    @RequestMapping("/home")
+    public String home(Model model) {
+        return "home";
+    }
+    
     @RequestMapping("/employeeList")
     public ModelAndView employeeList() {
         return new ModelAndView("employeeList","command",new Employee());

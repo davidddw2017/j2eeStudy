@@ -43,7 +43,7 @@
     </script>
 
     <script src="webjars/jquery/jquery.min.js"></script>
-    <script src="webjars/layui/layui.js"></script>
+    <script src="webjars/layui/layui.all.js"></script>
     <script src="static/js/common.js"></script>
 
     <script>
