@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cloud</groupId>
-  <artifactId>ssmDemoMySQL</artifactId>
+  <artifactId>ssmDemoMySQL1</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>ssmDemo Maven Webapp</name>
@@ -10,7 +10,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>5.2.1.RELEASE</spring.version>
-    <c3p0.version>0.9.5.4</c3p0.version>
+    <druid.version>1.1.20</druid.version>
     <mybatis.version>3.5.3</mybatis.version>
     <mybatis-spring.version>2.0.3</mybatis-spring.version>
     <jackson.version>2.10.0</jackson.version>
@@ -65,9 +65,9 @@
       <version>${mybatis-spring.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.mchange</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>${c3p0.version}</version>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
     </dependency>
     <dependency>
       <groupId>mysql</groupId>
@@ -108,11 +108,13 @@
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>taglibs</groupId>
       <artifactId>standard</artifactId>
       <version>1.1.2</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -196,8 +198,22 @@
           <target>1.8</target>
           <encoding>utf8</encoding>
         </configuration>
+      </plugin> 
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.22.v20191022</version>
+        <configuration>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <httpConnector>
+            <port>8080</port>
+          </httpConnector>
+          <webApp>
+            <contextPath>/${project.artifactId}</contextPath>
+          </webApp>
+        </configuration>
       </plugin>
     </plugins>
-    <finalName>ssmDemoMySQL</finalName>
+    <finalName>${project.artifactId}</finalName>
   </build>
 </project>

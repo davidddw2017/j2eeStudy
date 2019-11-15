@@ -1,19 +1,7 @@
 package org.cloud.ssm.mapper;
 
-import java.util.List;
-
 import org.cloud.ssm.entity.Employee;
+import org.cloud.ssm.utils.BaseMapper;
 
-public interface EmployeeMapper {
-	void addEmployee(Employee employee);
-
-    List<Employee> listEmployee();
-    
-    void deleteEmployee(long employeeID);
-    
-    void updateEmployee(Employee employee);
-
-    Employee getEmployee(long employeeID);
-    
-    long getCount();
+public interface EmployeeMapper extends BaseMapper<Employee> {
 }

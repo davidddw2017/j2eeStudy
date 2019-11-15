@@ -2,8 +2,8 @@ package org.cloud.ssm.controller;
 
 import java.util.List;
 
-import org.cloud.ssm.entity.Employee;
-import org.cloud.ssm.service.EmployeeService;
+import org.cloud.ssm.entity.Department;
+import org.cloud.ssm.service.DepartmentService;
 import org.cloud.ssm.utils.PageResultBean;
 import org.cloud.ssm.utils.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,48 +19,48 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/employee")
-public class EmployeeController {
+@RequestMapping("/api/department")
+public class DepartmentController {
 
 	@Autowired
-	private EmployeeService service;
+	private DepartmentService service;
 
 	@GetMapping("/list")
 	public @ResponseBody 
-	PageResultBean<Employee> listEmployee(
+	PageResultBean<Department> listDepartment(
 			@RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "limit", defaultValue = "10") int limit) {
-		List<Employee> emps = service.getAll(page, limit);
-		long count = service.getCount(new Employee());
-		return new PageResultBean<Employee>(count, emps);
+		List<Department> depts = service.getAll(page, limit);
+		long count = service.getCount(new Department());
+		return new PageResultBean<Department>(count, depts);
 	}
 
 	@PostMapping
-	public @ResponseBody ResultBean addEmployee(@RequestBody Employee employee) {
-		service.save(employee);
+	public @ResponseBody ResultBean addDepartment(@RequestBody Department department) {
+		service.save(department);
 		return ResultBean.success();
 	}
 
 	@DeleteMapping("/{id}")
-	public @ResponseBody ResultBean deleteEmployee(@PathVariable Long id) {
+	public @ResponseBody ResultBean deleteDepartment(@PathVariable Long id) {
 		service.deleteById(id);
 		return ResultBean.success();
 	}
 	
 	@GetMapping("/get")
-	public @ResponseBody Employee getEmployee(Employee employee) {
-		return service.getById(employee.getId()).orElse(new Employee());
+	public @ResponseBody Department getDepartment(Department department) {
+		return service.getById(department.getId()).orElse(new Department());
 	}
 	
 	@PutMapping
-	public @ResponseBody ResultBean updateEmployee(@RequestBody Employee employee) {
-		service.save(employee);
+	public @ResponseBody ResultBean updateDepartment(@RequestBody Department department) {
+		service.save(department);
 		return ResultBean.success();
 	}
 	
 	@PostMapping("delete")
     @ResponseBody
-    public ResultBean removeEmp(@RequestBody List<String> ids) {
+    public ResultBean removeDepartment(@RequestBody List<String> ids) {
         for (String id : ids) {
         	service.deleteById(Long.parseLong(id));
         }

@@ -76,6 +76,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <a lay-url="employeeList" lay-id="employeeList"><cite>雇员管理</cite></a>
               </dd>
             </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="stack">
+                <a lay-url="departmentList" lay-id="departmentList"><cite>部门管理</cite></a>
+              </dd>
+            </dl>
           </li>
         </ul>
       </div>

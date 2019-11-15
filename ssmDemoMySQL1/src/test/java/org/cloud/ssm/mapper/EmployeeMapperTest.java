@@ -2,7 +2,6 @@ package org.cloud.ssm.mapper;
 
 import javax.annotation.Resource;
 
-import org.cloud.ssm.entity.Employee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,7 +16,7 @@ public class EmployeeMapperTest {
 
 	@Test
 	public void testAddEmployee() {
-		employeeMapper.addEmployee(new Employee(null, "zhangshan", "beijing", 30));
+		
 	}
 
 }

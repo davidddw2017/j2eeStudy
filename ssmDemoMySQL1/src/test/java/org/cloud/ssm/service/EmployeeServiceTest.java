@@ -17,7 +17,7 @@ public class EmployeeServiceTest {
 
 	@Test
 	public void testAddEmployee() {
-		employeeService.addEmployee(new Employee(null, "zhangshan", "beijing1", 30));
+		employeeService.save(new Employee(null, "zhangshan", "beijing1", 30));
 	}
 
 }

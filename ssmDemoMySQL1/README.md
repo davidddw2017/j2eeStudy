@@ -14,12 +14,23 @@ create table t_employee
 name varchar(50) not null, 
 address varchar(100) not null,
 age int not null,
-department varchar(100) not null,
+department int not null,
 salary int,
-tel varchar(20) not null);
-insert into t_employee values(NULL, 'zhangsan', 'jilin', 23, 'deptNo1', 4000, '13888883345');
-insert into t_employee values(NULL, 'lisi', 'beijing', 25, 'deptNo2', 2000, '13888883343');
-insert into t_employee values(NULL, 'wangwu', 'shanghai', 24, 'deptNo3', 3000, '13888883348');
+tel varchar(20) not null,
+CONSTRAINT `t_emp_ibfk_1` FOREIGN KEY (`department`) REFERENCES `t_department` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT);
+insert into t_employee values(NULL, 'zhangsan', 'jilin', 23, 1, 4000, '13888883345');
+insert into t_employee values(NULL, 'lisi', 'beijing', 25, 2, 2000, '13888883343');
+insert into t_employee values(NULL, 'wangwu', 'shanghai', 24, 3, 3000, '13888883348');
+
+CREATE TABLE `t_department`  (
+`id` int(11) primary key AUTO_INCREMENT,
+`name` varchar(100) NOT NULL,
+`description` varchar(200) DEFAULT NULL);
+INSERT INTO `t_department` VALUES (1, '第一开发部', 'dept01');
+INSERT INTO `t_department` VALUES (2, '第二开发部', 'dept02');
+INSERT INTO `t_department` VALUES (3, '第三开发部', 'dept03');
+INSERT INTO `t_department` VALUES (4, '系统部', 'dept04');
+INSERT INTO `t_department` VALUES (5, '管理部', 'dept05');
 
 # 安装 MySQL 8.0
 ################################################################################
