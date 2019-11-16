@@ -50,4 +50,9 @@ public class PageController {
     public String deptAddPage(ModelMap model) throws Exception {
         return "departmentChange";
     }
+    
+    @GetMapping("/lotteryDraw")
+    public String lotteryDraw(ModelMap model) throws Exception {
+        return "lotteryDraw";
+    }
 }
