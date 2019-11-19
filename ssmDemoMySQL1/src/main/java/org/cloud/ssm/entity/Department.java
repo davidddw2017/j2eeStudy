@@ -47,6 +47,11 @@ public class Department implements Serializable {
     public Department() {
         super();
     }
+    
+    public Department(Long id) {
+        super();
+        this.id = id;
+    }
 
     public Department(Long id, String name, String description) {
         super();

@@ -2,22 +2,22 @@ package org.cloud.ssm.entity;
 
 import java.io.Serializable;
 
-public class Employee implements Serializable {
+public class EmployeeVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
 	private String address;
 	private Integer age;
-	private Department department;
+	private Long department;
 	private Integer salary;
 	private String tel;
 
-	public Employee() {
+	public EmployeeVo() {
 		super();
 	}
 
-	public Employee(Long id, String name, String address, Integer age, Department department, Integer salary, String tel) {
+	public EmployeeVo(Long id, String name, String address, Integer age, Long department, Integer salary, String tel) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,7 +28,7 @@ public class Employee implements Serializable {
 		this.tel = tel;
 	}
 
-	public Employee(Long id, String name, String address, Integer age) {
+	public EmployeeVo(Long id, String name, String address, Integer age) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,11 +68,11 @@ public class Employee implements Serializable {
 		this.age = age;
 	}
 
-	public Department getDepartment() {
+	public Long getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Department department) {
+	public void setDepartment(Long department) {
 		this.department = department;
 	}
 

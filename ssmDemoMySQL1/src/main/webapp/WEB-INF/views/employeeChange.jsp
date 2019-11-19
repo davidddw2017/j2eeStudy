@@ -60,8 +60,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="layui-form-item">
                 <label class="layui-form-label">部门</label>
                 <div class="layui-input-block">
-                    <input type="text" id="department" name="department" value="${employee.department}" lay-verify="required"  lay-vertype="tips" 
-                            autocomplete="off" placeholder="部门" class="layui-input">
+                    <select name="department" lay-verify="tips" >
+                        <option value="">请选择</option>
+                        <c:forEach items="${departmentList}" var="department">
+                            <option value="${department.id}" 
+                            <c:if test="${department.id == employee.department.id}">selected = "selected"</c:if>
+                            >${department.name}</option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item">

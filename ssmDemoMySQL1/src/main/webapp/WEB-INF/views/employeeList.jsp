@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -14,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="icon" href="<%=basePath%>static/favicon.ico" type="image/x-icon" />
     <title>雇员管理</title>
     <link rel="stylesheet" href="<%=basePath%>webjars/layui/css/layui.css" />
+    <link rel="stylesheet" href="<%=basePath%>webjars/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%=basePath%>static/css/zadmin.css">
     <link rel="stylesheet" href="<%=basePath%>static/css/common.css">
     <link rel="stylesheet" href="<%=basePath%>static/css/animate.min.css">
@@ -29,6 +31,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="layui-card-body">
             <div class="layui-row timo-card-screen put-row">
                 <div class="pull-right screen-btn-group">
+                    <div class="pull-left layui-form-pane timo-search-box">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">部门</label>
+                            <div class="layui-input-block timo-search-status">
+                                <select class="timo-search-select" name="deptId" lay-verify="tips" >
+                                    <option value="">请选择</option>
+                                    <c:forEach items="${departmentList}" var="department">
+                                        <option value="${department.id}">${department.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-block">
+                                <input id="dataReload" name="id" value="" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn timo-search-btn" id="searchBtn" data-type="reload">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="btn-group-right">
                         <button class="layui-btn open-popup" id="add_btn"><i class="fa fa-plus"></i> 添加</button>
                         <button class="layui-btn open-popup" data-type="getCheckData" id="del_btn"><i class="fa fa-trash"></i> 删除</button>
@@ -67,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     {checkbox: true}
                     , {field: 'id', title: 'ID', width: "10%", hide: true}
                     , {field: 'name', title: '用户名', width: "15%"}
-                    , {field: 'department', title: '部门', width: "15%"}
+                    , {field: 'department', title: '部门', width: "15%",templet:'<span>{{ d.department.name }}</span>'}
                     , {field: 'address', title: '地址', width: "15%"}
                     , {field: 'age', title: '年龄', width: "10%"}
                     , {field: 'tel', title: '手机', width: "14%"}
@@ -75,6 +101,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     , {title: '操作', fixed: 'right', align: 'center', toolbar: '#column-toolbar', width: "15%"}
                 ]
             ]
+        });
+        
+        $("#searchBtn").on("click",function(){
+            var dataReload = $('#dataReload')
+            , deptId = $('.timo-search-select');
+            var index = layer.msg('查询中，请稍后...', {icon: 16, time: false, shade: 0});
+            setTimeout(function() {
+                table.reload('userTable', {
+                    page: {
+                        curr: 1
+                    }
+                    , where: {
+                    	department: deptId.val()
+                        , username: dataReload.val()
+                    }
+                });
+                layer.close(index);
+            }, 800);
         });
             
         $("#add_btn").on("click",function(){

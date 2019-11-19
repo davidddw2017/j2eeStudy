@@ -20,18 +20,21 @@ public class PageController {
     private DepartmentService departmentService;
 
 	@GetMapping("/employeeList")
-	public String employeeList() {
+	public String employeeList(ModelMap model) {
+		model.addAttribute("departmentList", departmentService.getAll());
 		return "employeeList";
 	}
 
 	@GetMapping("/employeeChange")
-	public String employeeAddChange() {
+	public String employeeAddChange(ModelMap model) {
+		model.addAttribute("departmentList", departmentService.getAll());
 		return "employeeChange";
 	}
 
 	@GetMapping("/employeeChange/{id}")
 	public String employeeUpdateChange(ModelMap model, @PathVariable("id") Long id) {
 		model.addAttribute("employee", employeeService.getById(id).orElse(new Employee()));
+		model.addAttribute("departmentList", departmentService.getAll());
 		return "employeeChange";
 	}
 
