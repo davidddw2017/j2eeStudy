@@ -478,6 +478,7 @@
 	width: 150px;
 	height: 38px;
 	padding-left: 12px;
+	border-width: 1px;
 	border-color: #e6e6e6;
 	cursor: pointer;
 }

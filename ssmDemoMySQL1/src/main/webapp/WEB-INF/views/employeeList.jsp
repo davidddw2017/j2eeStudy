@@ -29,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span><i class="fa fa-bars"></i> 用户管理</span>
         </div>
         <div class="layui-card-body">
+            <form class="layui-form">
             <div class="layui-row timo-card-screen put-row">
                 <div class="pull-right screen-btn-group">
                     <div class="pull-left layui-form-pane timo-search-box">
@@ -61,6 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
+            </form>
             <div class="timo-table-wrap">
                 <table class="layui-hide timo-table" id="user-table" lay-filter="allAttr"></table>
             </div>
@@ -119,6 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 });
                 layer.close(index);
             }, 800);
+            return false;
         });
             
         $("#add_btn").on("click",function(){
