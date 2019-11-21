@@ -1,7 +1,6 @@
 layui.config({
     base: "static/js/",
-}).use(["zadmin", "tabRightMenu"], function () {
-    var zadmin = layui.zadmin;
+}).use(["tabRightMenu"], function () {
     var tabRightMenu = layui.tabRightMenu;
 
     // 渲染 tab 右键菜单.
@@ -10,10 +9,11 @@ layui.config({
         pintabIDs: ["home"],
         width: 110,
     });
-
+    
     setTimeout(function() {
-        zadmin.removeLoading();
+    	$(".page-loading").hide();
     }, 500);
+
 });
 
 /**
@@ -64,19 +64,6 @@ function dateFormat(fmt, date) {
         if (new RegExp("(" + k + ")").test(fmt))
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}
-
-/**
- * 公共打开父页面 tab 方法.
- * @param title
- * @param url
- */
-function openTab(title, url) {
-    parent.layui.zadmin.tabAdd({
-        id: url,
-        title: title,
-        url: url
-    });
 }
 
 /**

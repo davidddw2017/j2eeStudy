@@ -27,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="animated fadeIn layui-card">
         <div class="layui-card-header timo-card-header">
             <span><i class="fa fa-bars"></i> 用户管理</span>
+            <i class="layui-icon layui-icon-refresh refresh-btn"></i>
         </div>
         <div class="layui-card-body">
             <form class="layui-form">
@@ -76,6 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <script src="<%=basePath%>webjars/jquery/jquery.min.js"></script>
     <script src="<%=basePath%>webjars/layui/layui.all.js"></script>
+    <script src="<%=basePath%>static/js/zadmin.js"></script>
     <script src="<%=basePath%>static/js/common.js"></script>
 
     <script>
@@ -136,6 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     table.reload('userTable');
                 }
             });
+            return false;
         });
             
         $("#del_btn").on("click",function(){
@@ -154,6 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     handlerResult(data, deleteDone)
                 });
             });
+            return false;
         });
 
         // 行点击事件

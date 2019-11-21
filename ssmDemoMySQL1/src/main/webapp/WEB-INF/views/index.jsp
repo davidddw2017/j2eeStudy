@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <!DOCTYPE html>
 <html>
@@ -14,44 +15,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="icon" type="image/x-icon" href="static/favicon.ico">
 <link rel="stylesheet" href="<%=basePath%>webjars/layui/css/layui.css">
 <link rel="stylesheet" href="<%=basePath%>webjars/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="<%=basePath%>static/css/zadmin.css">
+<link rel="stylesheet" href="<%=basePath%>static/css/zadmin.css" media="all">
 <link rel="stylesheet" href="<%=basePath%>static/css/dtree.css">
 <link rel="stylesheet" href="<%=basePath%>static/css/common.css">
 <link rel="stylesheet" href="<%=basePath%>static/css/font.css">
 </head>
 <body class="layui-layout-body">
   <div class="layui-layout layui-layout-admin">
-    <!-- Main Header -->
+    <!-- 导航栏 -->
     <div class="layui-header">
       <!-- logo 区域 -->
-      <div class="layui-logo">
-        <cite>&nbsp;PESTLE&emsp;</cite>
-      </div>
-
-      <!-- 头部区域 -->
-      <ul class="layui-nav layui-layout-left">
-        <li class="layui-nav-item" lay-unselect><a lay-event="flexible" title="侧边伸缩"> <i
-            class="layui-icon layui-icon-shrink-right"></i>
-        </a></li>
-        <!-- 面包屑 -->
-        <span class="layui-breadcrumb layui-anim layui-anim-up"> <a><cite>首页</cite></a></span>
-      </ul>
-
-      <!-- 头像区域 -->
+      <a href="#" class="layui-logo">
+        <span class="layui-logo-mini">TIMO</span>
+        <span class="layui-logo-lg">TIMO 后台</span>
+      </a>
+      <a class="side-toggle layui-layout-left" href="#"> 
+        <i class="layui-icon layui-icon-shrink-right"></i> 
+        <i class="layui-icon layui-icon-spread-left"></i>
+      </a>
       <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
-          <a><img src="static/images/avatar.png" class="layui-nav-img" alt="头像">
-            <span class="layui-nav-more"></span>
+          <a href="#"> 
+            <i class="fa fa-bell-o fa-lg"></i>
           </a>
-          <dl class="layui-nav-child layui-anim layui-anim-upbit">
-            <dd lay-unselect> <a onclick="logout()">退出</a> </dd>
-          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="timo-screen-full" href="#"> 
+            <i class="fa layui-icon layui-icon-screen-full"></i>
+          </a>
+        </li>
+        <li class="layui-nav-item timo-nav-user">
+          <a class="timo-header-nickname">TIMO</a>
+          <div class="layui-nav-child">
+            <div class="timo-nav-child-box">
+              <div>
+                <a class="open-popup" data-title="个人信息" data-url="" data-size="680,464">
+                  <!-- -->
+                  <i class="fa fa-user-o"></i> 个人信息
+                </a>
+              </div>
+              <div>
+                <a class="open-popup" data-title="修改密码" data-url="" data-size="456,296">
+                  <!-- -->
+                  <i class="fa fa-lock" style="font-size: 17px; width: 12px;"></i>修改密码
+                </a>
+              </div>
+              <div>
+                <a href=""><i class="fa fa-power-off"></i>退出登录</a>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
-
     <!-- 左侧导航区域 -->
-    <div class="layui-side">
+    <div class="layui-side layui-bg-black">
       <div class="layui-side-scroll">
         <div class="layui-side-user">
           <img class="layui-side-user-avatar open-popup" data-size="680,464"
@@ -61,46 +79,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p class="layui-side-user-designation">在线</p>
           </div>
         </div>
-        <ul class="layui-nav layui-nav-tree" lay-filter="lay-nav" lay-accordion="true">
+        <!-- 导航区域 -->
+        <ul class="layui-nav layui-nav-tree" lay-filter="layui-nav-side">
           <li class="layui-nav-item layui-this">
-            <a lay-url="home" lay-id="home">
-              <i class="layui-icon layui-icon-home"></i>&emsp; <cite>首页</cite>
+            <a lay-url="home"> 
+              <i class="layui-icon layui-icon-home"></i><span class="layui-nav-title">主页</span>
             </a>
           </li>
           <li class="layui-nav-item">
-	        <a lay-id="#" lay-url="#">
-              <i class="iconfont layui-icon-picker-securityscan"></i>&emsp; <cite>人事管理</cite>
-            </a>
-            <dl class="layui-nav-child">
-              <dd data-name="stack">
-                <a lay-url="employeeList" lay-id="employeeList"><cite>雇员管理</cite></a>
-              </dd>
-            </dl>
-            <dl class="layui-nav-child">
-              <dd data-name="stack">
-                <a lay-url="departmentList" lay-id="departmentList"><cite>部门管理</cite></a>
-              </dd>
-            </dl>
+              <a lay-id="#" lay-url="#"> <i class="iconfont layui-icon-picker-securityscan"></i>
+                <span class="layui-nav-title">人事管理</span>
+              </a>
+              <dl class="layui-nav-child">
+                <dd>
+                  <a lay-url="employeeList" href="javascript:;"><span class="layui-nav-title">雇员管理</span></a>
+                </dd>
+                <dd>
+                  <a lay-url="departmentList" href="javascript:;"><span class="layui-nav-title">部门管理</span></a>
+                </dd>
+              </dl>
           </li>
         </ul>
       </div>
     </div>
-
-    <div class="layui-body">
-      <div class="layui-pagetabs">
-        <div class="layui-icon admin-tabs-control layui-icon-refresh-3" lay-event="refresh"></div>
-        <div class="layui-tab" lay-unauto lay-allowclose="true" lay-filter="lay-tab">
-          <ul class="layui-tab-title">
-            <li lay-id="home" lay-url="home" class="layui-this"><i
-              class="layui-icon layui-icon-home"></i></li>
-          </ul>
-          <div class="layui-tab-content">
-            <div class="layui-tab-item layui-show">
-              <iframe src="home" class="layui-iframe"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- 主体区域 -->
+   
+    <div class="layui-body layui-tab layui-tab-brief" lay-allowclose="true" lay-filter="iframe-tabs">
+      <!-- 标签栏 -->
+      <ul class="layui-tab-title"></ul>
+      <!-- 内容区域-->
+      <div class="layui-tab-content"></div> 
     </div>
 
     <!-- 底部固定区域 -->

@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="icon" href="<%=basePath%>static/favicon.ico" type="image/x-icon" />
     <title>部门管理</title>
     <link rel="stylesheet" href="<%=basePath%>webjars/layui/css/layui.css" />
+    <link rel="stylesheet" href="<%=basePath%>webjars/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%=basePath%>static/css/zadmin.css">
     <link rel="stylesheet" href="<%=basePath%>static/css/common.css">
     <link rel="stylesheet" href="<%=basePath%>static/css/animate.min.css">
@@ -25,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="animated fadeIn layui-card">
         <div class="layui-card-header timo-card-header">
             <span><i class="fa fa-bars"></i> 部门管理</span>
+            <i class="layui-icon layui-icon-refresh refresh-btn"></i>
         </div>
         <div class="layui-card-body">
             <div class="layui-row timo-card-screen put-row">
@@ -52,6 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <script src="<%=basePath%>webjars/jquery/jquery.min.js"></script>
     <script src="<%=basePath%>webjars/layui/layui.all.js"></script>
+    <script src="<%=basePath%>static/js/zadmin.js"></script>
     <script src="<%=basePath%>static/js/common.js"></script>
 
     <script>
@@ -87,6 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     table.reload('deptTable');
                 }
             });
+            return false;
         });
         $("#del_btn").on("click", function() {
             var checkStatus = table.checkStatus('deptTable')
@@ -107,6 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     });
                 });
             });
+            return false;
         });
         table.on('tool', function(obj) {
             var data = obj.data;
