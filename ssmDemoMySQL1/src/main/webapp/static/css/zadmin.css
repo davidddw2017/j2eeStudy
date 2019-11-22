@@ -142,7 +142,6 @@ a{
 	margin-right: 10px;
 	color: #666666;
 }
-
 /* 个人中心页面 */
 .user-info-page .user-info{
     position: absolute;
@@ -339,9 +338,14 @@ a{
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
 }
 .layui-layout-admin .layui-body .layui-tab-title li{
-    padding-left: 16px;
-    padding-right: 8px;
+	min-width: 0;
+    line-height: 42px;
+    max-width: 160px;
+    text-overflow: ellipsis;
+    padding-right: 30px;
+    overflow: hidden;
     border-right: 1px solid #f6f6f6;
+    vertical-align: top;
 }
 .layui-layout-admin .layui-body .layui-tab-title li:hover{
     background-color: #f8f8f8;
@@ -386,6 +390,16 @@ a{
 .layui-layout-admin .layui-body .layui-tab-content .layui-layout-iframe{
 	width: 100%;
     height: calc(100% - 41px) !important;
+}
+.layui-layout-admin .layui-footer {
+	position: fixed;
+	left: 220px;
+	right: 0;
+	bottom: 0;
+	height: 44px;
+	line-height: 44px;
+	padding: 0 15px;
+	background-color: #eee;
 }
 
 /* 其他 */
@@ -460,6 +474,9 @@ a{
 	.layui-layout-admin.layui-side-shrink .side-toggle .layui-icon-shrink-right {
 		display: none;
 	}
+	.layui-layout-admin.layui-side-shrink .layui-footer {
+		left: 50px !important;
+	}
 }
 
 /* 自适应小屏幕 */
@@ -476,6 +493,16 @@ a{
 	}
 	.layui-layout-admin.layui-side-shrink .layui-side{
 		left: 0;
+	}
+	.layui-layout-admin.layui-side-shrink .layui-body {
+    	left: 0 !important;
+    	top: 50px;
+	}
+	.layui-layout-admin.layui-side-shrink .layui-footer {
+		left: 220px !important;
+	}
+	.layui-layout-admin .layui-footer {
+		left: 0 !important;
 	}
 }
 
@@ -911,46 +938,8 @@ a{
     box-sizing: border-box;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
 }
-.layui-layout-admin .layui-body {
-    left: 220px;
-    top: 50px;
-}
-.layui-layout-admin .layui-body .admin-tabs-control {
-    position: absolute;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    cursor: pointer;
-    transition: all .3s;
-    border-left: 1px solid #eee;
-    z-index: 1000;
-    background-color: white
-}
-.layui-layout-admin .layui-body .admin-tabs-control:hover {
-    background-color: #eee
-}
-.layui-layout-admin .layui-body .layui-icon-refresh-3 {
-    right: 0
-}
-
-.layui-layout-admin .layui-tab .layui-tab-title li.layui-this,
-.layui-layout-admin .layui-tab .layui-tab-title li:hover {
-    background-color: #f6f6f6;
-}
 .layui-tab-title {
     border-bottom-width: 0;
-}
-.layui-layout-admin .layui-tab .layui-tab-title li {
-    min-width: 0;
-    line-height: 40px;
-    max-width: 160px;
-    text-overflow: ellipsis;
-    padding-right: 30px;
-    overflow: hidden;
-    border-right: 1px solid #f6f6f6;
-    vertical-align: top;
 }
 .layui-iframe {
     position: absolute;
@@ -961,14 +950,4 @@ a{
     right: 0;
     bottom: 0;
     border: none;
-}
-.layui-layout-admin .layui-footer {
-	position: fixed;
-	left: 220px !important;
-	right: 0;
-	bottom: 0;
-	height: 44px;
-	line-height: 44px;
-	padding: 0 15px;
-	background-color: #eee;
 }

@@ -104,11 +104,19 @@
     </div>
     <!-- 主体区域 -->
    
-    <div class="layui-body layui-tab layui-tab-brief" lay-allowclose="true" lay-filter="iframe-tabs">
+    <div class="layui-body layui-tab" lay-unauto lay-allowclose="true" lay-filter="iframe-tabs">
       <!-- 标签栏 -->
-      <ul class="layui-tab-title"></ul>
+      <ul class="layui-tab-title">
+        <li lay-id="home" lay-url="home" class="layui-this">
+          <i class="layui-icon layui-icon-home"></i> 主页  
+        </li>
+      </ul>
       <!-- 内容区域-->
-      <div class="layui-tab-content"></div> 
+      <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+          <iframe src="home" class="layui-layout-iframe" frameborder="0"></iframe>
+        </div>
+      </div> 
     </div>
 
     <!-- 底部固定区域 -->

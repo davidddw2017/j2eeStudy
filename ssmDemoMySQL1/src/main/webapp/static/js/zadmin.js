@@ -68,8 +68,9 @@ layui.use(['element', 'form', 'layer', 'upload'], function () {
         $('[lay-url="' + layId + '"]').parent().addClass("layui-this");
         // 改变地址hash值
         location.hash = this.getAttribute('lay-id');
+        $(".layui-tab ul").children('li').first().children('.layui-tab-close').css("display",'none');
     });
-
+    
     /* 监听hash来切换选项卡*/
     window.onhashchange = function (e) {
         var url = location.hash.replace(/^#/, '');
@@ -369,4 +370,6 @@ layui.use(['element', 'form', 'layer', 'upload'], function () {
     $(document).on("click", ".upload-item-close", function () {
         $(this).parent('.upload-item').remove();
     });
+    
+    $(".layui-tab ul").children('li').first().children('.layui-tab-close').css("display",'none');
 });
