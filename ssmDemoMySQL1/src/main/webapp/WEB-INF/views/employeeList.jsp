@@ -145,7 +145,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var checkStatus = table.checkStatus('userTable')
             ,checkData = checkStatus.data;
             if (checkData.length === 0) {
-                return layer.msg('请选择数据');
+            	layer.msg('请选择数据');
+                return false;
             }
             layer.confirm('确定删除吗?', function (index) {
                 var reqBody = checkData.reduce(function(acc, cur) {
